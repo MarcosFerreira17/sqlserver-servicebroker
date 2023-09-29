@@ -1,0 +1,25 @@
+ALTER DATABASE pocDatabase SET ENABLE_BROKER;
+
+CREATE QUEUE pocQueue	
+	WITH STATUS = ON,
+	RETENTION = ON,
+	ACTIVATION (
+		PROCEDURE_NAME = procTriggerQueue,
+		MAX_QUEUE_READERS = 10,
+		EXECUTE AS SELF
+	)
+	ON [DEFAULT];
+	
+CREATE CONTRACT pocContract
+(
+    messageType SENT BY INITIATOR
+);
+
+CREATE SERVICE pocService
+    ON QUEUE pocQueue
+    (
+        pocContract
+    );
+
+CREATE MESSAGE TYPE messageType
+VALIDATION = WELL_FORMED_XML;
