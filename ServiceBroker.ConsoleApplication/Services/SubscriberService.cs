@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using ServiceBroker.ConsoleApplication.Configurations;
@@ -20,8 +21,37 @@ public class SubscriberService : ISubscribeService
         command.Transaction = connection.BeginTransaction();
         try
         {
+            string message = string.Empty;
             command.CommandText = GetQuery();
+
+            SqlParameter dialogHandler = new("@dialog_handle", SqlDbType.UniqueIdentifier)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            SqlParameter messageParam = new("@message", SqlDbType.NVarChar, -1)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            command.CommandTimeout = 60000;
+
             await command.ExecuteNonQueryAsync();
+
+            if (messageParam.Value != DBNull.Value)
+            {
+                message = (string)messageParam.Value;
+
+                if ((Guid)dialogHandler.Value != Guid.Empty)
+                {
+                    command.CommandText = "END CONVERSATION @dialog_handle";
+                    command.Parameters.Clear();
+                    command.Parameters.AddWithValue("@dialog_handle", dialogHandler.Value);
+                    await command.ExecuteNonQueryAsync();
+                }
+
+                //trata mensagem
+            }
 
             await command.Transaction.CommitAsync();
         }
@@ -43,6 +73,6 @@ public class SubscriberService : ISubscribeService
 
     public string GetQuery()
     {
-        return "WAITFOR (RECEIVE TOP(1) message_body FROM dbo." + DatabaseConfig.GetQueueName() + ");";
+        return "WAITFOR (RECEIVE TOP(1) @dialog_handle = conversation_handle, @message = message_body FROM dbo." + DatabaseConfig.GetQueueName() + ") TIMEOUT 60000";
     }
 }

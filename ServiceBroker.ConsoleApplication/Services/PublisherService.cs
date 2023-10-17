@@ -1,3 +1,5 @@
+using System.Data;
+using System.Runtime.InteropServices;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -27,8 +29,19 @@ public class PublisherService : IPublisherService
 
         try
         {
-            command.Transaction = connection.BeginTransaction();
             command.CommandText = GetQuery(message);
+
+            command.Transaction = connection.BeginTransaction();
+
+            SqlParameter sqlParameter = new("@dialog_handle", SqlDbType.UniqueIdentifier)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            command.Parameters.Add(sqlParameter);
+
+            command.Parameters.AddWithValue("@message_body", message);
+            command.Parameters.AddWithValue("@service_name", $"{DatabaseConfig.GetQueueName()}");
 
             await command.ExecuteNonQueryAsync();
 
@@ -57,18 +70,16 @@ public class PublisherService : IPublisherService
 
     private string GetQuery(string message)
     {
-        string queue = DatabaseConfig.GetQueueName();
         string service = DatabaseConfig.GetServiceName();
         string contract = DatabaseConfig.GetContractName();
         string messageType = DatabaseConfig.GetMessageType();
 
-        return $@"DECLARE @conversationHandle UNIQUEIDENTIFIER;
-                    BEGIN DIALOG CONVERSATION @conversationHandle
+        return $@"BEGIN DIALOG @dialog_handle
                         FROM SERVICE {service}
-                        TO SERVICE '{service}', '{queue}'
+                        TO SERVICE '{service}', 'CURRENT DATABASE'
                         ON CONTRACT {contract}
                         WITH ENCRYPTION = OFF;
-                    SEND ON CONVERSATION @conversationHandle
-                        MESSAGE TYPE {messageType}('{message}');";
+                    SEND ON CONVERSATION @dialog_handle
+                        MESSAGE TYPE {messageType}(@message_body);";
     }
 }

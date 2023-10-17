@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password123
+    ports:
+      - "1433:1433"
+    volumes:
+      - consoledb:/var/opt/mssql/data
+    networks:
+      - console-network
+  servicebroker:
+    image: ${DOCKER_REGISTRY-}servicebroker
+    build:
+      context: .
+      dockerfile: ServiceBroker.ConsoleApplication/Dockerfile
+    depends_on:
+      - sql-server
+    ports:
+      - "5000:80"
+    networks:
+      - console-network
+    environment:
+      - connectionstring=Server=sql-server;Database=ServiceBroker;User Id=sa;Password=Password123;
+
+volumes:
+  consoledb:
+networks:
+  console-network:
+    driver: bridge
