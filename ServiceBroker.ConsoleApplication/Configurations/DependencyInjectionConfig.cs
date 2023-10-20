@@ -9,7 +9,7 @@ public static class DependencyInjectionConfig
     {
         services.AddScoped<IPublisherService, PublisherService>();
         services.AddScoped<ISubscribeService, SubscriberService>();
-        services.AddScoped<HostBackgroundService>();
+        services.AddHostedService<HostBackgroundService>();
 
         return services;
     }
