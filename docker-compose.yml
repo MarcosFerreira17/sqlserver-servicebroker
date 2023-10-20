@@ -24,10 +24,11 @@ services:
     networks:
       - console-network
     environment:
-      - connectionstring=Server=sql-server;Database=ServiceBroker;User Id=sa;Password=Password123;
+      - connectionstring=Server=sql-server;Database=ServiceBroker;User Id=sa;Password=Password123
 
 volumes:
   consoledb:
+
 networks:
   console-network:
     driver: bridge
