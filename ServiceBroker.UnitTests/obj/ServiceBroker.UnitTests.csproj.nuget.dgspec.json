@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.UnitTests\\ServiceBroker.UnitTests.csproj": {}
+    "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.UnitTests\\ServiceBroker.UnitTests.csproj": {}
   },
   "projects": {
-    "c:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj": {
+    "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj",
+        "projectUniqueName": "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj",
         "projectName": "ServiceBroker.ConsoleApplication",
-        "projectPath": "c:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj",
+        "projectPath": "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj",
         "packagesPath": "C:\\Users\\mnia\\.nuget\\packages\\",
-        "outputPath": "c:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.ConsoleApplication\\obj\\",
+        "outputPath": "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.ConsoleApplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -42,6 +42,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
               "version": "[7.0.1, )"
@@ -67,14 +71,14 @@
         }
       }
     },
-    "c:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.UnitTests\\ServiceBroker.UnitTests.csproj": {
+    "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.UnitTests\\ServiceBroker.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.UnitTests\\ServiceBroker.UnitTests.csproj",
+        "projectUniqueName": "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.UnitTests\\ServiceBroker.UnitTests.csproj",
         "projectName": "ServiceBroker.UnitTests",
-        "projectPath": "c:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.UnitTests\\ServiceBroker.UnitTests.csproj",
+        "projectPath": "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.UnitTests\\ServiceBroker.UnitTests.csproj",
         "packagesPath": "C:\\Users\\mnia\\.nuget\\packages\\",
-        "outputPath": "c:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.UnitTests\\obj\\",
+        "outputPath": "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -86,14 +90,15 @@
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://khanum.pkgs.visualstudio.com/_packaging/Khanum/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "c:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj": {
-                "projectPath": "c:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj"
+              "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj": {
+                "projectPath": "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj"
               }
             }
           }

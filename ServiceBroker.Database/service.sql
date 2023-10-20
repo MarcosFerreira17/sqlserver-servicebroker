@@ -1,5 +1,5 @@
-CREATE SERVICE ConsoleService
-    ON QUEUE ConsoleQueue
+CREATE SERVICE ServiceName
+    ON QUEUE QueueName
     (
-        ConsoleContract
+        ContractName
     );

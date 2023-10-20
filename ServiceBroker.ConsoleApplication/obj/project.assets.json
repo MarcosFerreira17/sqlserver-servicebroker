@@ -3403,11 +3403,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj",
+      "projectUniqueName": "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj",
       "projectName": "ServiceBroker.ConsoleApplication",
-      "projectPath": "C:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj",
+      "projectPath": "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj",
       "packagesPath": "C:\\Users\\mnia\\.nuget\\packages\\",
-      "outputPath": "C:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.ConsoleApplication\\obj\\",
+      "outputPath": "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.ConsoleApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

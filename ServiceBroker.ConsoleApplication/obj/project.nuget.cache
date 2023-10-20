@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B/1Ui4O+tWm9zMUu7sLk9BtHf/XfLXSrxUErhiJxu5Fy2K8WjI8T+FWsMGLPYqIDUmy8YxKwFG+mgFn7YQ4Hcg==",
+  "dgSpecHash": "vCtx+Rh4NK3B7Rulz3jsuyBTx0zYtenAcbKFgEJnXIUoH9Rjo8SOmpJoKCmBK8YAMXPWdMuVcYHM9qaig1PWJw==",
   "success": true,
-  "projectFilePath": "C:\\dev\\labs\\lab-service-broker\\poc-service-broker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj",
+  "projectFilePath": "C:\\dev\\my-projects\\sqlservermq-servicebroker\\ServiceBroker.ConsoleApplication\\ServiceBroker.ConsoleApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mnia\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\mnia\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
